@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^rest/login', views.do_login),
+    url(r'^rest/register', views.do_register),
     url(r'^rest/ksiazki/$', KsiazkaList.as_view()),
     url(r'^rest/ksiazki/(?P<pk>[0-9]+)/$', KsiazkaDetail.as_view()),
 
