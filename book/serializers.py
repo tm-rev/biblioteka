@@ -6,6 +6,7 @@ class KsiazkaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ksiazka
         fields = '__all__'
+        depth = 2
 
 class WydanieSerializer(serializers.ModelSerializer):
     class Meta:

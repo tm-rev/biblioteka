@@ -1,7 +1,22 @@
 from django.db import models
 
 
+class Autor(models.Model):
+    imie = models.CharField(max_length=150)
+    nazwisko = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.imie + " " + self.nazwisko
+
+class Kategoria(models.Model):
+    nazwa = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.nazwa
+
 class Ksiazka(models.Model):
+    kategorie = models.ManyToManyField(Kategoria)
+    autorzy = models.ManyToManyField(Autor)
     tytul = models.CharField(max_length=500)
 
 
@@ -22,6 +37,7 @@ class Egzemplarz(models.Model):
     @property
     def wydanie_ISBN(self):
         return self.wydanie.ISBN
+
 
 
 
