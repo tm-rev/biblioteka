@@ -65,16 +65,20 @@ class Polka(models.Model):
 
 
 class Rezerwacja(models.Model):
-    NOWA = 0
-    ROZPATRZONA = 1
+    OCZEKUJACA = 0
+    ZREALIZOWANA = 1
+    WYGASLA = 2
+    ANULOWANA = 3
     STATUSY_REZERWACJI = (
-        (NOWA, 'Nowa'),
-        (ROZPATRZONA, 'Rozpatrzona')
+        (OCZEKUJACA, 'Oczekująca'),
+        (ZREALIZOWANA, 'Zrealizowana'),
+        (WYGASLA, 'Wygasła'),
+        (ANULOWANA, 'Anulowana')
     )
     uzytkownik = models.ForeignKey(SiteUser, on_delete=models.CASCADE)
     wydanie = models.ForeignKey(Wydanie, on_delete=models.CASCADE)
     data_rezerwacji = models.DateField()
-    status = models.IntegerField(default = NOWA, choices = STATUSY_REZERWACJI)
+    status = models.IntegerField(default = OCZEKUJACA, choices = STATUSY_REZERWACJI)
 
     @property
     def rezerwujacy(self):
