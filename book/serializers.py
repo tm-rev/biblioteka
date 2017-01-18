@@ -25,6 +25,7 @@ class OcenaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PolkaSerializer(serializers.ModelSerializer):
+    wydania = WydanieSerializer(many=True)
     class Meta:
         model = Polka
         fields = '__all__'
